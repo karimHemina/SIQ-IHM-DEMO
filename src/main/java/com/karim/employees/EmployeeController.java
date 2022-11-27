@@ -20,11 +20,6 @@ import java.util.ResourceBundle;
 
 public class EmployeeController implements Initializable {
 
-    Connection connection = null;
-    PreparedStatement statement = null;
-    ResultSet resultSet = null;
-
-
     @FXML
     private TextField textFirstName;
 
@@ -55,6 +50,8 @@ public class EmployeeController implements Initializable {
 
     @FXML
     public void createEmployee(ActionEvent actionEvent) {
+        EmployeeDB.persist(textFirstName.getText(), textLastName.getText(), textPosition.getText());
+        showEmployees();
     }
 
     @FXML
@@ -69,31 +66,8 @@ public class EmployeeController implements Initializable {
     public void clearFields(ActionEvent actionEvent) {
     }
 
-    public ObservableList<Employee> getEmployees(){
-        ObservableList<Employee> employees = FXCollections.observableArrayList();
-
-        String query = "select * from employee";
-        connection = Database.getConnection();
-        try {
-            statement = connection.prepareStatement(query);
-            resultSet = statement.executeQuery();
-            while (resultSet.next()){
-                int id = resultSet.getInt("id");
-                String firstName = resultSet.getString("FirstName");
-                String lastName = resultSet.getString("LastName");
-                String position = resultSet.getString("Position");
-                Employee employee = new Employee(id, firstName, lastName, position);
-                employees.add(employee);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return employees;
-    }
-
     public void showEmployees(){
-        ObservableList<Employee> employeesList = getEmployees();
+        ObservableList<Employee> employeesList = EmployeeDB.getEmployees();
         tableEmployees.setItems(employeesList);
         coldId.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("id"));
         colFirstName.setCellValueFactory(new PropertyValueFactory<Employee, String>("firstName"));

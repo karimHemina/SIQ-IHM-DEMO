@@ -1,6 +1,5 @@
 package com.karim.employees;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,10 +12,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class EmployeeController implements Initializable {
@@ -34,12 +29,6 @@ public class EmployeeController implements Initializable {
     private TableView<Employee> tableEmployees;
     @FXML
     private Button btnSave;
-    @FXML
-    private Button btnUpdate;
-    @FXML
-    private Button btnDelete;
-    @FXML
-    private Button btnClear;
     @FXML
     private TableColumn<Employee, Integer> coldId;
     @FXML

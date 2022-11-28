@@ -20,12 +20,19 @@ public class Employee {
         return id;
     }
 
+
     public String getFirstName() {
         return firstName;
     }
 
+
     public String getLastName() {
         return lastName;
+    }
+
+
+    public String getPosition() {
+        return position;
     }
 
 }

@@ -39,7 +39,7 @@
                </VBox.margin>
             </TextField>
          </children></VBox>
-      <TableView fx:id="tableEmployees" layoutX="602.0" layoutY="100.0" prefHeight="307.0" prefWidth="569.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="130.0">
+      <TableView fx:id="tableEmployees" layoutX="602.0" layoutY="100.0" onMouseClicked="#getItem" prefHeight="307.0" prefWidth="569.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="130.0">
         <columns>
           <TableColumn fx:id="coldId" prefWidth="77.0" text="ID" />
           <TableColumn fx:id="colFirstName" prefWidth="135.0" text="First Name" />

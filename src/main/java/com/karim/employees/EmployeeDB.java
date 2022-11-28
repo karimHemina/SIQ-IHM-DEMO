@@ -49,4 +49,31 @@ public class EmployeeDB extends Employee {
         }
     }
 
+    public static void updateEmployee(int id, String firstName, String lastName, String position){
+
+        String query = "update employee set FirstName = ?, LastName = ?, Position = ? where id = ?";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            statement.setString(3, position);
+            statement.setInt(4, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public static void deleteEmployee(int id){
+        String query = "delete from employee where id = ?";
+        try {
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
